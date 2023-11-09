@@ -1,6 +1,6 @@
 numpy
 pandas
-sklearn
+scikit-learn
 flask
 flask-cors
 gunicorn
@@ -10,5 +10,6 @@ pymongo[srv]
 dnspython
 xgboost
 optuna
-evidently
+evidently==0.2.8
+six
 -e.
