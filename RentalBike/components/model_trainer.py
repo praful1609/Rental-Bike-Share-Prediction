@@ -5,7 +5,6 @@ from RentalBike.entity.artifact_entity import DataTransformationArtifact, ModelT
 from RentalBike.utils.utils import save_object
 from RentalBike.constant import *
 import pandas as pd
-import numpy as np
 import os,sys
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
@@ -30,8 +29,12 @@ class ModelTrainer:
     def get_random_forest_best_params(self, x_train,y_train)->dict:
         try:
             logging.info("Grid Search for Random forest best parameters started")
-            rf = RandomForestRegressor(n_estimators=100, criterion='squared_error',random_state=21)
-            param_grid = {"n_estimators" : [50,75,100,125, 150]}
+            rf = RandomForestRegressor(n_estimators=100,
+                                       criterion='squared_error',                            
+                                       random_state=21)
+            param_grid = {"n_estimators" : [50,75,100,125,150],
+                          "min_samples_split" : range(2,7),
+                          "max_depth" : range(5,10)}
             grid_rf = GridSearchCV(estimator=rf, param_grid=param_grid, cv=5, scoring="r2")
             grid_rf.fit(x_train, y_train)
             logging.info("Grid Search for Random forest best parameters completed")
@@ -49,10 +52,10 @@ class ModelTrainer:
                 'alpha' :  trial.suggest_loguniform('alpha', 1e-4, 10.0),
                 'colsample_bytree' : trial.suggest_categorical('colsample_bytree', [.1,.2,.3,.4,.5,.6,.7,.8,.9,1]),
                 'subsample' : trial.suggest_categorical('subsample', [.1,.2,.3,.4,.5,.6,.7,.8,.9,1]),
-                'learning_rate' : trial.suggest_categorical('learning_rate',[.00001,.0003,.008,.02,.01,0.10,0.15,0.2,1,10,20]),
-                'n_estimators': 130,
-                'max_depth' : trial.suggest_categorical('max_depth', [3,4,5,6,7,8,9,10,11,12]),
-                'random_state' : 786,
+                'learning_rate' : trial.suggest_categorical('learning_rate',[0.1, 0.01,0.001, 0.0001, 1, 1.5]),
+                'n_estimators': 115,
+                'max_depth' : trial.suggest_categorical('max_depth', [3,4,5,6,7,8,9,10]),
+                'random_state' : 20,
                 'min_child_weight' : trial.suggest_int('min_child_weight',1,200),
                 'booster' : trial.suggest_categorical('booster',["gblinear","gbtree","dart"]),
                 "reg_lambda" : trial.suggest_categorical("reg_lambda",[0.01, 0.05, 0.10]),
@@ -97,7 +100,7 @@ class ModelTrainer:
 
     def XGBoost_Regressor(self,x_train,y_train,x_test,y_test):
         try:
-            logging.info("Getting Best Parameters for Random Forest by Grid Search CV")
+            logging.info("Getting Best Parameters for XGBoost by Grid Search CV")
             xgb_best_params = self.get_xgboost_best_params(x_train,y_train,x_test,y_test)
 
             logging.info(f"XGB Best Parameters : {xgb_best_params}")

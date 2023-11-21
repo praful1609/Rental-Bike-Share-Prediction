@@ -8,10 +8,12 @@ import pandas as pd
 import re
 import json
 
+
+
 from evidently.dashboard import Dashboard
 from evidently.dashboard.tabs import DataDriftTab
 from evidently.model_profile import Profile
-from evidently.profile_sections import DataDriftProfileSection
+from evidently.model_profile.sections import DataDriftProfileSection
 
 class Prediction_Validation:
     def __init__(self,path, data_validation_config : DataValidationConfig):
