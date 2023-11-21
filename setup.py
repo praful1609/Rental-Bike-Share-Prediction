@@ -4,7 +4,7 @@ from typing import List
 PROJECT_NAME = "Machine Learning project"
 VERSION = "0.0.1"
 AUTHOR = "Praful Bhojane"
-DESCRIPTION = "End to End ML project on Rental Bike Share Price Prediction dataset"
+DESCRIPTION = "End to End ML project on Rental Bike Count Prediction dataset"
 
 REQUIREMENTS_FILE_NAME = "requirements.txt"
 

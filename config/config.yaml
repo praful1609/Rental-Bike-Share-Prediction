@@ -27,3 +27,6 @@ data_transformation_config:
 model_trainer_config:
   trained_model_dir: trained_model
   model_file_name: model.pkl
+
+model_pusher_config:
+  model_export_dir: saved_models

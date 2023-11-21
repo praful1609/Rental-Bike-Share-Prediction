@@ -50,7 +50,7 @@ TARGET_COLUMN_KEY = "target_column"
 PIKLE_FOLDER_NAME_KEY = "prediction_files"
 
 # Database related varibles
-DATABASE_CLIENT_URL_KEY = "mongodb+srv://praful98760:praful98760@cluster0.fww71zp.mongodb.net/?retryWrites=true&w=majority"
+DATABASE_CLIENT_URL_KEY = "mongodb+srv://praful98760:praful98760@cluster0.3nwpara.mongodb.net/?retryWrites=true&w=majority"
 DATABASE_NAME_KEY = 'Rental_Bike_Share_DB'
 DATABASE_COLLECTION_NAME_KEY = "Bike_Data"
 DATABASE_TRAINING_COLLECTION_NAME_KEY = "Training"

@@ -72,7 +72,6 @@ class Prediction_Validation:
                 raise Exception(f"Columns: [{col}] have entire row as missing value") 
 
             return True
-
         except Exception as e:
             raise CustomException(e,sys) from e 
     
