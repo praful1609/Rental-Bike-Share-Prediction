@@ -10,6 +10,6 @@ pymongo[srv]
 dnspython
 xgboost
 optuna
-evidently
+evidently==0.2.4
 six
 -e.
