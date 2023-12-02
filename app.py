@@ -5,7 +5,7 @@ from RentalBike.pipeline.prediction_pipeline import Prediction
 from RentalBike.pipeline.training_pipeline import Training_Pipeline
 from RentalBike.constant import *
 from RentalBike.logger import logging
-import os
+import os 
 import shutil
 
 app = Flask(__name__)
